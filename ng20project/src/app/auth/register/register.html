@@ -1,0 +1,102 @@
+<div class="container">
+  <h2>Register</h2>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="emailInput">Email</label>
+      <input id="emailInput" formControlName="Email" type="email" class="form-control" placeholder="Enter email">
+      <div *ngIf="registerForm.get('Email')?.invalid && registerForm.get('Email')?.touched" class="text-danger">
+        Valid email is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="passwordInput">Password</label>
+      <input id="passwordInput" formControlName="PswdHash" type="password" class="form-control" placeholder="Enter password">
+      <div *ngIf="registerForm.get('PswdHash')?.invalid && registerForm.get('PswdHash')?.touched" class="text-danger">
+        Password is required.
+      </div>
+    </div>
+    <app-role-dropdown (roleSelected)="onRoleChange($event)"></app-role-dropdown>
+    <div *ngIf="role === 'Doctor'">
+      <div class="form-group">
+        <label for="fullNameInput">Full Name</label>
+        <input id="fullNameInput" formControlName="FullName" type="text" class="form-control" placeholder="Enter full name">
+        <div *ngIf="registerForm.get('FullName')?.invalid && registerForm.get('FullName')?.touched" class="text-danger">
+          Full name is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="specialisationInput">Specialisation</label>
+        <input id="specialisationInput" formControlName="Specialisation" type="text" class="form-control" placeholder="Enter specialisation">
+        <div *ngIf="registerForm.get('Specialisation')?.invalid && registerForm.get('Specialisation')?.touched" class="text-danger">
+          Specialisation is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="hpidInput">Hpid</label>
+        <input id="hpidInput" formControlName="Hpid" type="text" class="form-control" placeholder="Enter Hpid">
+        <div *ngIf="registerForm.get('Hpid')?.invalid && registerForm.get('Hpid')?.touched" class="text-danger">
+          Hpid is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="availabilityInput">Availability</label>
+        <input id="availabilityInput" formControlName="Availability" type="text" class="form-control" placeholder="Enter availability (e.g., Mon-Fri 9AM-5PM)">
+        <div *ngIf="registerForm.get('Availability')?.invalid && registerForm.get('Availability')?.touched" class="text-danger">
+          Availability is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="contactNoInput">Contact Number</label>
+        <input id="contactNoInput" formControlName="ContactNo" type="text" class="form-control" placeholder="Enter contact number">
+        <div *ngIf="registerForm.get('ContactNo')?.invalid && registerForm.get('ContactNo')?.touched" class="text-danger">
+          Contact number is required.
+        </div>
+      </div>
+    </div>
+    <div *ngIf="role === 'Patient'">
+      <div class="form-group">
+        <label for="fullNameInput">Full Name</label>
+        <input id="fullNameInput" formControlName="FullName" type="text" class="form-control" placeholder="Enter full name">
+        <div *ngIf="registerForm.get('FullName')?.invalid && registerForm.get('FullName')?.touched" class="text-danger">
+          Full name is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="dobInput">Date of Birth</label>
+        <input id="dobInput" formControlName="Dob" type="date" class="form-control">
+        <div *ngIf="registerForm.get('Dob')?.invalid && registerForm.get('Dob')?.touched" class="text-danger">
+          Date of birth is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="genderInput">Gender</label>
+        <input id="genderInput" formControlName="Gender" type="text" class="form-control" placeholder="Enter gender">
+        <div *ngIf="registerForm.get('Gender')?.invalid && registerForm.get('Gender')?.touched" class="text-danger">
+          Gender is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="contactNoInput">Contact Number</label>
+        <input id="contactNoInput" formControlName="ContactNo" type="text" class="form-control" placeholder="Enter contact number">
+        <div *ngIf="registerForm.get('ContactNo')?.invalid && registerForm.get('ContactNo')?.touched" class="text-danger">
+          Contact number is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="addressInput">Address</label>
+        <input id="addressInput" formControlName="Address" type="text" class="form-control" placeholder="Enter address">
+        <div *ngIf="registerForm.get('Address')?.invalid && registerForm.get('Address')?.touched" class="text-danger">
+          Address is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="aadhaarNoInput">Aadhaar Number</label>
+        <input id="aadhaarNoInput" formControlName="AadhaarNo" type="text" class="form-control" placeholder="Enter Aadhaar number">
+        <div *ngIf="registerForm.get('AadhaarNo')?.invalid && registerForm.get('AadhaarNo')?.touched" class="text-danger">
+          Aadhaar number is required.
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3" [disabled]="registerForm.invalid || !role">Register</button>
+  </form>
+</div>

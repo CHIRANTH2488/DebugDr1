@@ -1,0 +1,16 @@
+<div class="container">
+  <h2>Our Doctors</h2>
+  <div *ngIf="doctors.length === 0">No doctors available.</div>
+  <div class="row">
+    <div *ngFor="let doc of doctors" class="col-md-4 mb-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ doc.fullName }}</h5>
+          <p class="card-text">Specialisation: {{ doc.specialisation }}</p>
+          <p class="card-text">Hpid: {{ doc.hpid }}</p>
+          <p class="card-text">Availability: {{ doc.availability }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

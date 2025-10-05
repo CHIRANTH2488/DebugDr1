@@ -1,0 +1,13 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand">Debugging Doctors</a>
+    <div class="navbar-nav">
+      <a class="nav-link" (click)="viewChange.emit('home')">Home</a>
+      <a class="nav-link" (click)="viewChange.emit('about')">About</a>
+      <a class="nav-link" (click)="viewChange.emit('vision')">Vision</a>
+      <a class="nav-link" (click)="viewChange.emit('doctors')">Our Doctors</a>
+      <a class="nav-link" (click)="viewChange.emit('login')">Login</a>
+      <a class="nav-link" (click)="viewChange.emit('register')">Register</a>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,52 @@
+<div class="container-fluid">
+  <ng-container *ngIf="!authService.isLoggedIn(); else loggedInContent">
+    <app-main-portal *ngIf="currentView === 'main'" (viewChange)="setView($event)"></app-main-portal>
+    <app-home *ngIf="currentView === 'home'"></app-home>
+    <app-about *ngIf="currentView === 'about'"></app-about>
+    <app-vision *ngIf="currentView === 'vision'"></app-vision>
+    <app-our-doctors *ngIf="currentView === 'doctors'"></app-our-doctors>
+    <app-login *ngIf="currentView === 'login'"></app-login>
+    <app-register *ngIf="currentView === 'register'"></app-register>
+  </ng-container>
+
+  <ng-template #loggedInContent>
+    <button class="btn btn-danger mb-3" (click)="logout()">Logout</button>
+    <ng-container [ngSwitch]="authService.getRole()">
+      <div *ngSwitchCase="'Admin'">
+        <app-admin-navbar (viewChange)="setView($event)"></app-admin-navbar>
+        <app-admin-dashboard *ngIf="currentView === 'dashboard'"></app-admin-dashboard>
+        <app-doctor-requests *ngIf="currentView === 'doctor-requests'"></app-doctor-requests>
+        <app-patient-requests *ngIf="currentView === 'patient-requests'"></app-patient-requests>
+        <app-doctor-list *ngIf="currentView === 'doctor-list'"></app-doctor-list>
+        <app-patient-list *ngIf="currentView === 'patient-list'"></app-patient-list>
+        <app-appointment-ongoing *ngIf="currentView === 'appointment-ongoing'"></app-appointment-ongoing>
+        <app-appointment-upcoming *ngIf="currentView === 'appointment-upcoming'"></app-appointment-upcoming>
+        <app-appointment-finished *ngIf="currentView === 'appointment-finished'"></app-appointment-finished>
+      </div>
+      <div *ngSwitchCase="'Doctor'">
+        <app-doctor-navbar (viewChange)="setView($event)"></app-doctor-navbar>
+        <app-doctor-dashboard *ngIf="currentView === 'dashboard'"></app-doctor-dashboard>
+        <app-doctor-details *ngIf="currentView === 'details'"></app-doctor-details>
+        <app-appointment-upcoming *ngIf="currentView === 'appointment-upcoming'"></app-appointment-upcoming>
+        <app-appointment-ongoing *ngIf="currentView === 'appointment-ongoing'"></app-appointment-ongoing>
+        <app-appointment-history *ngIf="currentView === 'appointment-history'"></app-appointment-history>
+        <app-prescription-form *ngIf="currentView === 'prescription-form'"></app-prescription-form>
+        <app-invoice-form *ngIf="currentView === 'invoice-form'"></app-invoice-form>
+        <app-download-pdf *ngIf="currentView === 'download-pdf'"></app-download-pdf>
+      </div>
+      <div *ngSwitchCase="'Patient'">
+        <app-patient-navbar (viewChange)="setView($event)"></app-patient-navbar>
+        <app-patient-dashboard *ngIf="currentView === 'dashboard'"></app-patient-dashboard>
+        <app-patient-details *ngIf="currentView === 'details'"></app-patient-details>
+        <app-book-appointment *ngIf="currentView === 'book-appointment'"></app-book-appointment>
+        <app-cancel-appointment *ngIf="currentView === 'cancel-appointment'"></app-cancel-appointment>
+        <app-appointment-upcoming *ngIf="currentView === 'appointment-upcoming'"></app-appointment-upcoming>
+        <app-appointment-ongoing *ngIf="currentView === 'appointment-ongoing'"></app-appointment-ongoing>
+        <app-appointment-history *ngIf="currentView === 'appointment-history'"></app-appointment-history>
+      </div>
+      <div *ngSwitchDefault>
+        <p>Invalid Role</p>
+      </div>
+    </ng-container>
+  </ng-template>
+</div>

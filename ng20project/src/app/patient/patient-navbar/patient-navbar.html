@@ -1,0 +1,14 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand">Patient Panel</a>
+    <div class="navbar-nav">
+      <a class="nav-link" (click)="viewChange.emit('dashboard')">Dashboard</a>
+      <a class="nav-link" (click)="viewChange.emit('details')">Profile</a>
+      <a class="nav-link" (click)="viewChange.emit('book-appointment')">Book Appointment</a>
+      <a class="nav-link" (click)="viewChange.emit('cancel-appointment')">Cancel Appointment</a>
+      <a class="nav-link" (click)="viewChange.emit('appointment-upcoming')">Upcoming</a>
+      <a class="nav-link" (click)="viewChange.emit('appointment-ongoing')">Ongoing</a>
+      <a class="nav-link" (click)="viewChange.emit('appointment-history')">History</a>
+    </div>
+  </div>
+</nav>

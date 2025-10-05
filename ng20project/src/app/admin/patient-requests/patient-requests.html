@@ -1,0 +1,11 @@
+<div class="container">
+  <h2>Patient Requests</h2>
+  <div *ngIf="pendingPatients.length === 0">No pending patient requests.</div>
+  <ul class="list-group">
+    <li *ngFor="let patient of pendingPatients" class="list-group-item">
+      <strong>{{ patient.fullName }}</strong> - Aadhaar: {{ patient.aadhaarNo }}
+      <button class="btn btn-success btn-sm float-end" (click)="approve(patient.patientId, true)">Approve</button>
+      <button class="btn btn-danger btn-sm float-end me-2" (click)="approve(patient.patientId, false)">Decline</button>
+    </li>
+  </ul>
+</div>

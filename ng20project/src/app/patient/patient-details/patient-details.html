@@ -1,0 +1,12 @@
+<div class="container">
+  <h2>Patient Profile</h2>
+  <div *ngIf="patient; else loading">
+    <p><strong>Name:</strong> {{ patient.fullName }}</p>
+    <p><strong>Date of Birth:</strong> {{ patient.dob }}</p>
+    <p><strong>Gender:</strong> {{ patient.gender }}</p>
+    <p><strong>Contact:</strong> {{ patient.contactNo }}</p>
+    <p><strong>Address:</strong> {{ patient.address }}</p>
+    <p><strong>Aadhaar:</strong> {{ patient.aadhaarNo }}</p>
+  </div>
+  <ng-template #loading>Loading...</ng-template>
+</div>

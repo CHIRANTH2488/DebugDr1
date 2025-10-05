@@ -1,0 +1,11 @@
+<div class="container">
+  <h2>Doctor Requests</h2>
+  <div *ngIf="pendingDoctors.length === 0">No pending doctor requests.</div>
+  <ul class="list-group">
+    <li *ngFor="let doc of pendingDoctors" class="list-group-item">
+      <strong>{{ doc.fullName }}</strong> - {{ doc.specialisation }} (Hpid: {{ doc.hpid }})
+      <button class="btn btn-success btn-sm float-end" (click)="approve(doc.docId, true)">Approve</button>
+      <button class="btn btn-danger btn-sm float-end me-2" (click)="approve(doc.docId, false)">Decline</button>
+    </li>
+  </ul>
+</div>

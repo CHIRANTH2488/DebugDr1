@@ -1,0 +1,9 @@
+<div class="container">
+  <h2>Patients</h2>
+  <div *ngIf="patients.length === 0">No patients available.</div>
+  <ul class="list-group">
+    <li *ngFor="let patient of patients" class="list-group-item">
+      <strong>{{ patient.fullName }}</strong> - Aadhaar: {{ patient.aadhaarNo }}
+    </li>
+  </ul>
+</div>

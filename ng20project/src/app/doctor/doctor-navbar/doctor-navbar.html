@@ -1,0 +1,15 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand">Doctor Panel</a>
+    <div class="navbar-nav">
+      <a class="nav-link" (click)="viewChange.emit('dashboard')">Dashboard</a>
+      <a class="nav-link" (click)="viewChange.emit('details')">Profile</a>
+      <a class="nav-link" (click)="viewChange.emit('appointment-upcoming')">Upcoming</a>
+      <a class="nav-link" (click)="viewChange.emit('appointment-ongoing')">Ongoing</a>
+      <a class="nav-link" (click)="viewChange.emit('appointment-history')">History</a>
+      <a class="nav-link" (click)="viewChange.emit('prescription-form')">Prescribe</a>
+      <a class="nav-link" (click)="viewChange.emit('invoice-form')">Invoice</a>
+      <a class="nav-link" (click)="viewChange.emit('download-pdf')">Download PDF</a>
+    </div>
+  </div>
+</nav>

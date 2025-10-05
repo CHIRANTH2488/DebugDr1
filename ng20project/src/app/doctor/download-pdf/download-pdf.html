@@ -1,0 +1,13 @@
+<div class="container">
+  <h2>Download PDF</h2>
+  <div *ngIf="appointments.length === 0">No PDFs available for download.</div>
+  <ul class="list-group">
+    <li *ngFor="let appt of appointments" class="list-group-item">
+      Appointment #{{ appt.appointmentId }} - {{ appt.appointmentDate }}
+      <div class="float-end">
+        <button *ngIf="appt.prescription" class="btn btn-primary btn-sm me-2" (click)="downloadPrescription(appt.appointmentId)">Download Prescription</button>
+        <button *ngIf="appt.invoice" class="btn btn-primary btn-sm" (click)="downloadInvoice(appt.appointmentId)">Download Invoice</button>
+      </div>
+    </li>
+  </ul>
+</div>

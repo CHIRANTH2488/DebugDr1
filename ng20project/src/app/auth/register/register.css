@@ -1,0 +1,9 @@
+.container {
+  max-width: 600px;
+}
+.form-group {
+  margin-bottom: 1rem;
+}
+.text-danger {
+  font-size: 0.875rem;
+}

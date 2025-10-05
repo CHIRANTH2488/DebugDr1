@@ -1,0 +1,72 @@
+<div class="container">
+  <h2>Create Prescription</h2>
+  <div *ngIf="isLoading" class="text-center">Loading...</div>
+  <form [formGroup]="prescriptionForm" (ngSubmit)="onSubmit()" *ngIf="!isLoading">
+    <div class="form-group">
+      <label for="appointmentSelect">Appointment</label>
+      <select id="appointmentSelect" formControlName="AppointmentId" class="form-control">
+        <option value="">Select Appointment</option>
+        <option *ngFor="let appt of appointments" [value]="appt.appointmentId">{{ appt.appointmentId }} - {{ appt.appointmentDate }}</option>
+      </select>
+      <div *ngIf="prescriptionForm.get('AppointmentId')?.invalid && prescriptionForm.get('AppointmentId')?.touched" class="text-danger">
+        Appointment selection is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Chief Complaints</label>
+      <textarea formControlName="ChiefComplaints" class="form-control" placeholder="Enter chief complaints"></textarea>
+      <div *ngIf="prescriptionForm.get('ChiefComplaints')?.invalid && prescriptionForm.get('ChiefComplaints')?.touched" class="text-danger">
+        Chief complaints are required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Past History</label>
+      <textarea formControlName="PastHistory" class="form-control" placeholder="Enter past history (optional)"></textarea>
+    </div>
+    <div class="form-group">
+      <label>Examination</label>
+      <textarea formControlName="Examination" class="form-control" placeholder="Enter examination details (optional)"></textarea>
+    </div>
+    <div class="form-group">
+      <label>Medications</label>
+      <div formArrayName="Medications">
+        <div *ngFor="let med of medications.controls; let i=index" [formGroupName]="i" class="row mb-2">
+          <div class="col">
+            <input formControlName="Name" type="text" class="form-control" placeholder="Medication Name">
+            <div *ngIf="med.get('Name')?.invalid && med.get('Name')?.touched" class="text-danger">
+              Medication name is required.
+            </div>
+          </div>
+          <div class="col">
+            <input formControlName="Timing" type="text" class="form-control" placeholder="Timing (e.g., Once daily)">
+            <div *ngIf="med.get('Timing')?.invalid && med.get('Timing')?.touched" class="text-danger">
+              Timing is required.
+            </div>
+          </div>
+          <div class="col">
+            <input formControlName="BeforeAfterFood" type="text" class="form-control" placeholder="Before/After Food">
+            <div *ngIf="med.get('BeforeAfterFood')?.invalid && med.get('BeforeAfterFood')?.touched" class="text-danger">
+              Before/After Food is required.
+            </div>
+          </div>
+          <div class="col-auto">
+            <button type="button" class="btn btn-danger btn-sm" (click)="removeMedication(i)">Remove</button>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="btn btn-secondary mt-2" (click)="addMedication()">Add Medication</button>
+    </div>
+    <div class="form-group">
+      <label>Advice</label>
+      <textarea formControlName="Advice" class="form-control" placeholder="Enter advice (optional)"></textarea>
+    </div>
+    <div class="form-group">
+      <label>Signature</label>
+      <input formControlName="Signature" type="text" class="form-control" placeholder="Enter signature">
+      <div *ngIf="prescriptionForm.get('Signature')?.invalid && prescriptionForm.get('Signature')?.touched" class="text-danger">
+        Signature is required.
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3" [disabled]="prescriptionForm.invalid || isLoading">Submit Prescription</button>
+  </form>
+</div>

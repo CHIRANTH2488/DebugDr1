@@ -1,0 +1,9 @@
+<div class="container">
+  <h2>Doctors</h2>
+  <div *ngIf="doctors.length === 0">No doctors available.</div>
+  <ul class="list-group">
+    <li *ngFor="let doc of doctors" class="list-group-item">
+      <strong>{{ doc.fullName }}</strong> - {{ doc.specialisation }} (Hpid: {{ doc.hpid }})
+    </li>
+  </ul>
+</div>

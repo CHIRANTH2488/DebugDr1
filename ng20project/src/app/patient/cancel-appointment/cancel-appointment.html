@@ -1,0 +1,10 @@
+<div class="container">
+  <h2>Cancel Appointment</h2>
+  <div *ngIf="appointments.length === 0">No appointments to cancel.</div>
+  <ul class="list-group">
+    <li *ngFor="let appt of appointments" class="list-group-item">
+      Appointment #{{ appt.appointmentId }} - {{ appt.appointmentDate }} (Doctor: {{ appt.doctorId }})
+      <button class="btn btn-danger btn-sm float-end" (click)="cancel(appt.appointmentId)">Cancel</button>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,9 @@
+<div class="container">
+  <h2>Appointment History</h2>
+  <div *ngIf="appointments.length === 0">No appointment history.</div>
+  <ul class="list-group">
+    <li *ngFor="let appt of appointments" class="list-group-item">
+      Appointment #{{ appt.appointmentId }} - {{ appt.appointmentDate }} (Status: {{ appt.appointmentStatus }})
+    </li>
+  </ul>
+</div>

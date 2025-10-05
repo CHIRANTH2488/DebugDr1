@@ -1,0 +1,11 @@
+<div class="container">
+  <h2>Doctor Profile</h2>
+  <div *ngIf="doctor; else loading">
+    <p><strong>Name:</strong> {{ doctor.fullName }}</p>
+    <p><strong>Specialisation:</strong> {{ doctor.specialisation }}</p>
+    <p><strong>Hpid:</strong> {{ doctor.hpid }}</p>
+    <p><strong>Contact:</strong> {{ doctor.contactNo }}</p>
+    <p><strong>Availability:</strong> {{ doctor.availability }}</p>
+  </div>
+  <ng-template #loading>Loading...</ng-template>
+</div>

@@ -1,0 +1,12 @@
+.container {
+  max-width: 800px;
+}
+.form-group {
+  margin-bottom: 1rem;
+}
+textarea {
+  min-height: 100px;
+}
+.text-danger {
+  font-size: 0.875rem;
+}

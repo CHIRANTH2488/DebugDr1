@@ -1,0 +1,38 @@
+<div class="container">
+  <h2>Create Invoice</h2>
+  <div *ngIf="isLoading" class="text-center">Loading...</div>
+  <form [formGroup]="invoiceForm" (ngSubmit)="onSubmit()" *ngIf="!isLoading">
+    <div class="form-group">
+      <label for="appointmentSelect">Appointment</label>
+      <select id="appointmentSelect" formControlName="AppointmentId" class="form-control">
+        <option value="">Select Appointment</option>
+        <option *ngFor="let appt of appointments" [value]="appt.appointmentId">{{ appt.appointmentId }} - {{ appt.appointmentDate }}</option>
+      </select>
+      <div *ngIf="invoiceForm.get('AppointmentId')?.invalid && invoiceForm.get('AppointmentId')?.touched" class="text-danger">
+        Appointment selection is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="amountInput">Amount ($)</label>
+      <input id="amountInput" formControlName="Amount" type="number" class="form-control" placeholder="Enter amount">
+      <div *ngIf="invoiceForm.get('Amount')?.invalid && invoiceForm.get('Amount')?.touched" class="text-danger">
+        Valid amount is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="descriptionInput">Description</label>
+      <textarea id="descriptionInput" formControlName="Description" class="form-control" placeholder="Enter invoice description"></textarea>
+      <div *ngIf="invoiceForm.get('Description')?.invalid && invoiceForm.get('Description')?.touched" class="text-danger">
+        Description is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="issueDateInput">Issue Date</label>
+      <input id="issueDateInput" formControlName="IssueDate" type="date" class="form-control">
+      <div *ngIf="invoiceForm.get('IssueDate')?.invalid && invoiceForm.get('IssueDate')?.touched" class="text-danger">
+        Issue date is required.
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3" [disabled]="invoiceForm.invalid || isLoading">Submit Invoice</button>
+  </form>
+</div>

@@ -1,0 +1,24 @@
+<div class="container">
+  <h2>Book Appointment</h2>
+  <div *ngIf="isLoading" class="text-center">Loading...</div>
+  <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()" *ngIf="!isLoading">
+    <div class="form-group">
+      <label for="doctorSelect">Doctor</label>
+      <select id="doctorSelect" formControlName="DoctorId" class="form-control">
+        <option value="">Select Doctor</option>
+        <option *ngFor="let doc of doctors" [value]="doc.docId">{{ doc.fullName }} - {{ doc.specialisation }}</option>
+      </select>
+      <div *ngIf="appointmentForm.get('DoctorId')?.invalid && appointmentForm.get('DoctorId')?.touched" class="text-danger">
+        Doctor selection is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="appointmentDateInput">Appointment Date</label>
+      <input id="appointmentDateInput" formControlName="AppointmentDate" type="datetime-local" class="form-control">
+      <div *ngIf="appointmentForm.get('AppointmentDate')?.invalid && appointmentForm.get('AppointmentDate')?.touched" class="text-danger">
+        Appointment date is required.
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3" [disabled]="appointmentForm.invalid || isLoading">Book Appointment</button>
+  </form>
+</div>
