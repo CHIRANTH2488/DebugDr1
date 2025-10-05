@@ -1,3 +1,16 @@
 .container-fluid {
-  padding: 20px;
+  padding: 0 15px;
+}
+.navbar {
+  margin-bottom: 20px;
+}
+.text-center {
+  margin-top: 50px;
+}
+.me-2 {
+  margin-right: 0.5rem;
+}
+.text-danger {
+  font-size: 0.875rem;
+  text-align: center;
 }

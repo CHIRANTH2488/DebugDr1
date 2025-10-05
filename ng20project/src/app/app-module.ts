@@ -23,7 +23,11 @@ import { ApiService } from './services/api';
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
-    JwtModule.forRoot({}),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => localStorage.getItem('token')
+      }
+    }),
     AuthModule,
     AdminModule,
     DoctorModule,

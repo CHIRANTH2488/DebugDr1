@@ -1,7 +1,28 @@
 <div class="container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+    <a class="navbar-brand" href="#" (click)="goToHome()">Debugging Doctors</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="navbar-nav">
+        <a class="nav-link" *ngIf="!authService.isLoggedIn()" (click)="goToHome()">Home</a>
+        <a class="nav-link" *ngIf="!authService.isLoggedIn()" (click)="goToLogin()">Login</a>
+        <a class="nav-link" *ngIf="!authService.isLoggedIn()" (click)="goToRegister()">Register</a>
+        <a class="nav-link" *ngIf="authService.isLoggedIn()" (click)="goToDashboard()">Dashboard</a>
+        <a class="nav-link" *ngIf="authService.isLoggedIn()" (click)="logout()">Logout</a>
+      </div>
+    </div>
+  </nav>
+
   <ng-container *ngIf="!authService.isLoggedIn(); else loggedInContent">
+    <div class="text-center mt-5" *ngIf="currentView === 'home'">
+      <h1>Welcome to Debugging Doctors</h1>
+      <p>Your trusted healthcare provider. Book appointments, manage prescriptions, and more.</p>
+      <button class="btn btn-primary me-2" (click)="goToLogin()">Login</button>
+      <button class="btn btn-secondary" (click)="goToRegister()">Register</button>
+    </div>
     <app-main-portal *ngIf="currentView === 'main'" (viewChange)="setView($event)"></app-main-portal>
-    <app-home *ngIf="currentView === 'home'"></app-home>
     <app-about *ngIf="currentView === 'about'"></app-about>
     <app-vision *ngIf="currentView === 'vision'"></app-vision>
     <app-our-doctors *ngIf="currentView === 'doctors'"></app-our-doctors>
@@ -10,7 +31,6 @@
   </ng-container>
 
   <ng-template #loggedInContent>
-    <button class="btn btn-danger mb-3" (click)="logout()">Logout</button>
     <ng-container [ngSwitch]="authService.getRole()">
       <div *ngSwitchCase="'Admin'">
         <app-admin-navbar (viewChange)="setView($event)"></app-admin-navbar>
@@ -45,7 +65,7 @@
         <app-appointment-history *ngIf="currentView === 'appointment-history'"></app-appointment-history>
       </div>
       <div *ngSwitchDefault>
-        <p>Invalid Role</p>
+        <p class="text-danger">Invalid Role</p>
       </div>
     </ng-container>
   </ng-template>

@@ -20,4 +20,21 @@ export class App {
   setView(view: string) {
     this.currentView = view;
   }
+
+  // Helper methods for navigation
+  goToLogin() {
+    this.currentView = 'login';
+  }
+
+  goToRegister() {
+    this.currentView = 'register';
+  }
+
+  goToHome() {
+    this.currentView = 'home';
+  }
+
+  goToDashboard() {
+    this.currentView = 'dashboard';
+  }
 }
