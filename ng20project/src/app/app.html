@@ -65,7 +65,8 @@
         <app-appointment-history *ngIf="currentView === 'appointment-history'"></app-appointment-history>
       </div>
       <div *ngSwitchDefault>
-        <p class="text-danger">Invalid Role</p>
+        <p class="text-danger">Invalid Role. Please log in again.</p>
+        <button class="btn btn-danger mt-3" (click)="logout()">Logout</button>
       </div>
     </ng-container>
   </ng-template>

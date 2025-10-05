@@ -18,23 +18,23 @@ export class App {
   }
 
   setView(view: string) {
+    console.log('Switching to view:', view); // Debug log
     this.currentView = view;
   }
 
-  // Helper methods for navigation
   goToLogin() {
-    this.currentView = 'login';
+    this.setView('login');
   }
 
   goToRegister() {
-    this.currentView = 'register';
+    this.setView('register');
   }
 
   goToHome() {
-    this.currentView = 'home';
+    this.setView('home');
   }
 
   goToDashboard() {
-    this.currentView = 'dashboard';
+    this.setView('dashboard');
   }
 }
